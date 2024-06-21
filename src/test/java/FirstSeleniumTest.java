@@ -72,13 +72,13 @@ public class FirstSeleniumTest {
         Assert.assertTrue(!signinButtons.isEmpty());
     }
 
-    /*@AfterMethod
+    @AfterMethod
     public void tearDown() {
         //Close the browser
         if (driver != null) {
             driver.quit();
         }
-    }*/
+    }
 }
 
 
