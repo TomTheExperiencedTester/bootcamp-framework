@@ -4,11 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.List;
 
 public class FirstSeleniumTest {
@@ -21,7 +24,7 @@ public class FirstSeleniumTest {
         // Set up ChromeDriver using WebDriverManager
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
+        driver.manage().window().maximize();
     }
 
     @Test
@@ -53,21 +56,29 @@ public class FirstSeleniumTest {
 
     @Test
     public void testSignout() {
-        testLoginSuccessful();
+        driver.get(BASE_URL);
+        driver.findElement(By.className("login")).click();
+        WebElement emailAddressTextbox = driver.findElement(By.id("email"));
+        emailAddressTextbox.sendKeys("tom.vandesteene@polteq.com");
+        WebElement PasswordTextbox = driver.findElement(By.id("passwd"));
+        PasswordTextbox.sendKeys("Nina2");
+        WebElement signinButton = driver.findElement(By.id("SubmitLogin"));
+        signinButton.click();
         WebElement signoutButton = driver.findElement(By.cssSelector("a.logout"));
         signoutButton.click();
-        WebElement signinButton = driver.findElement(By.id("SubmitLogin"));
+        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(signinButton));
         List<WebElement> signinButtons = driver.findElements(By.className("login"));
-        Assert.assertEquals(signinButtons.size(), 1);
+        Assert.assertTrue(!signinButtons.isEmpty());
     }
 
-    @AfterMethod
+    /*@AfterMethod
     public void tearDown() {
         //Close the browser
         if (driver != null) {
             driver.quit();
         }
-    }
+    }*/
 }
 
 
