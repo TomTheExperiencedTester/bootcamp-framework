@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -56,5 +57,13 @@ public class FillCartTest {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(filledCart));
         List<WebElement> filledCarts = driver.findElements(By.cssSelector(".ajax_cart_quantity"));
         Assertions.assertThat(filledCarts.size()).isGreaterThan(0);
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        //Close the browser
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
