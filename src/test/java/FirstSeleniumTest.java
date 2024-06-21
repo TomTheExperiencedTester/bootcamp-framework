@@ -57,16 +57,17 @@ public class FirstSeleniumTest {
         WebElement signoutButton = driver.findElement(By.cssSelector("a.logout"));
         signoutButton.click();
         WebElement signinButton = driver.findElement(By.id("SubmitLogin"));
-        Assertions.assertThat(signinButton.isDisplayed());
+        List<WebElement> signinButtons = driver.findElements(By.className("login"));
+        Assert.assertEquals(signinButtons.size(), 1);
     }
 
-    /*@AfterMethod
+    @AfterMethod
     public void tearDown() {
         //Close the browser
         if (driver != null) {
             driver.quit();
         }
-    }*/
+    }
 }
 
 
