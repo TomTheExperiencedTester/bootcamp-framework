@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,13 +51,22 @@ public class FirstSeleniumTest {
     @Test
     public void testLoginUnsuccessful() {}
 
-    @AfterMethod
+    @Test
+    public void testSignout() {
+        testLoginSuccessful();
+        WebElement signoutButton = driver.findElement(By.cssSelector("a.logout"));
+        signoutButton.click();
+        WebElement signinButton = driver.findElement(By.id("SubmitLogin"));
+        Assertions.assertThat(signinButton.isDisplayed());
+    }
+
+    /*@AfterMethod
     public void tearDown() {
         //Close the browser
         if (driver != null) {
             driver.quit();
         }
-    }
+    }*/
 }
 
 
