@@ -10,17 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ClickIPodsInCategoriesTest {
-    private WebDriver driver;
-    private final String BASE_URL = "https://greatshop.polteq-testing.com/";
+public class ClickIPodsInCategoriesTest extends TestShopScenario{
 
-    @BeforeMethod
-    public void setUp() {
-        // Set up ChromeDriver using WebDriverManager
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+
+
     @Test
     public void clickIPodsInCategories() {
         driver.get(BASE_URL);

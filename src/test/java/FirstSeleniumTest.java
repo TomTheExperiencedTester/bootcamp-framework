@@ -3,32 +3,21 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
 import java.time.Duration;
 import java.util.List;
 
-public class FirstSeleniumTest {
+public class FirstSeleniumTest extends TestShopScenario {
 
-    private WebDriver driver;
-    private final String BASE_URL = "https://greatshop.polteq-testing.com/";
     private final String EMAIL_ADDRESS = "tom.vandesteene@polteq.com";
     private final String PASSWORD = "Nina2";
 
-    @BeforeMethod
-    public void setUp() {
-        // Set up ChromeDriver using WebDriverManager
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+
 
     @Test
     public void testHomePageTitle() {
@@ -69,14 +58,6 @@ public class FirstSeleniumTest {
         List<WebElement> signinButtons = driver.findElements(By.className("login"));
         Assert.assertTrue(!signinButtons.isEmpty());
     }
-
-    /*@AfterMethod
-    public void tearDown() {
-        //Close the browser
-        if (driver != null) {
-            driver.quit();
-        }
-    }*/
 }
 
 

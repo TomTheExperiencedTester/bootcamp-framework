@@ -10,34 +10,21 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.HomePage;
 
 import java.time.Duration;
 import java.util.List;
 
-public class FillCartTest {
-    private WebDriver driver;
-    private final String BASE_URL = "https://greatshop.polteq-testing.com/";
+public class FillCartTest extends TestShopScenario{
 
-    @BeforeMethod
-    public void setUp() {
-        // Set up ChromeDriver using WebDriverManager
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+    private final String EMAIL_ADDRESS = "tom.vandesteene@polteq.com";
+    private final String PASSWORD = "Nina2";
 
     @Test
     public void FillCart() {
         // Navigate to the website
-        driver.get(BASE_URL);
-        driver.get(BASE_URL);
-        driver.findElement(By.className("login")).click();
-        WebElement emailAddressTextbox = driver.findElement(By.id("email"));
-        emailAddressTextbox.sendKeys("tom.vandesteene@polteq.com");
-        WebElement PasswordTextbox = driver.findElement(By.id("passwd"));
-        PasswordTextbox.sendKeys("Nina2");
-        WebElement signinButton = driver.findElement(By.id("SubmitLogin"));
-        signinButton.click();
+        HomePage homePage = new HomePage(driver);
+        homePage.login(EMAIL_ADDRESS, PASSWORD);
         List<WebElement> signoutButtons = driver.findElements(By.className("logout"));
         Assert.assertEquals(signoutButtons.size(), 1);
         WebElement shoppingCart = driver.findElement(By.cssSelector("a[href='https://greatshop.polteq-testing.com/index.php?controller=order']"));;

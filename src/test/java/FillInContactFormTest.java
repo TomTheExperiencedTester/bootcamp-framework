@@ -7,24 +7,15 @@ import org.testng.annotations.Test;
 import pages.ContactFormPage;
 import pages.HomePage;
 
-public class FillInContactFormTest {
-    private WebDriver driver;
-    private final String BASE_URL = "https://greatshop.polteq-testing.com/";
+public class FillInContactFormTest extends TestShopScenario{
+
     private final String EMAIL_ADDRESS = "tom.vandesteene@polteq.com";
     private final String PASSWORD = "Nina2";
 
-    @BeforeMethod
-    public void setUp() {
-        // Set up ChromeDriver using WebDriverManager
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
 
-    }
 
     @Test
     public void TestContactFormPage(){
-        driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
         homePage.login(EMAIL_ADDRESS, PASSWORD);
         homePage.goToContactFormPage();
@@ -32,7 +23,6 @@ public class FillInContactFormTest {
 
     @Test
     public void TestSelectCustomerService(){
-        driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
         homePage.login(EMAIL_ADDRESS, PASSWORD);
         homePage.goToContactFormPage();
@@ -41,7 +31,6 @@ public class FillInContactFormTest {
     }
     @Test
     public void TestSendMessage(){
-        driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
         homePage.login(EMAIL_ADDRESS, PASSWORD);
         homePage.goToContactFormPage();

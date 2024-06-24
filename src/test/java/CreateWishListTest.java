@@ -7,16 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CreateWishListTest {
-    private WebDriver driver;
-    private final String BASE_URL = "https://greatshop.polteq-testing.com/";
-
-    @BeforeMethod
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+public class CreateWishListTest extends TestShopScenario{
 
     @Test
     public void createWishList() {

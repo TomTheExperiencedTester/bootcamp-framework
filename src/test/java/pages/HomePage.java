@@ -22,6 +22,8 @@ public class HomePage {
     private WebElement signoutButton;
     @FindBy(css = "li#header_link_contact > a[title='contact']")
     private WebElement contactLink;
+    @FindBy(css = "a[title='My wishlists']")
+    private WebElement myWishListsButton;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -37,5 +39,9 @@ public class HomePage {
 
     public void goToContactFormPage(){
         contactLink.click();
+    }
+
+    public void goToWishLists(){
+        myWishListsButton.click();
     }
 }

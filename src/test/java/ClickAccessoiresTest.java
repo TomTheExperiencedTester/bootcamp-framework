@@ -5,30 +5,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.HomePage;
 
-public class ClickAccessoiresTest {
-    private WebDriver driver;
-    private final String BASE_URL = "https://greatshop.polteq-testing.com/";
-
-    @BeforeMethod
-    public void setUp() {
-        // Set up ChromeDriver using WebDriverManager
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+public class ClickAccessoiresTest extends TestShopScenario{
+    private final String EMAIL_ADDRESS = "tom.vandesteene@polteq.com";
+    private final String PASSWORD = "Nina2";
 
     @Test
     public void clickAccessories(){
-        driver.get(BASE_URL);
-        driver.findElement(By.className("login")).click();
-        WebElement emailAddressTextbox = driver.findElement(By.id("email"));
-        emailAddressTextbox.sendKeys("tom.vandesteene@polteq.com");
-        WebElement PasswordTextbox = driver.findElement(By.id("passwd"));
-        PasswordTextbox.sendKeys("Nina2");
-        WebElement signinButton = driver.findElement(By.id("SubmitLogin"));
-        signinButton.click();
 
+        HomePage homepage = new HomePage(driver);
+        homepage.login(EMAIL_ADDRESS, PASSWORD);
         // Zoek de "Accessories" knop
         WebElement accessoriesButton = driver.findElement(By.cssSelector("ul.sf-menu > li > a[title='Accessories']"));
 
