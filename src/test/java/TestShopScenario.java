@@ -1,8 +1,11 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lib.Browser;
+import lib.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public abstract class TestShopScenario {
     protected WebDriver driver;
@@ -11,10 +14,13 @@ public abstract class TestShopScenario {
     @BeforeMethod
     public void setup(){
         // Set up ChromeDriver using WebDriverManager
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get(BASE_URL);
+        driver = DriverFactory.createDriver(Browser.CHROME);
         driver.manage().window().maximize();
+    }
+
+    @Test
+    public void startTest(){
+        driver = DriverFactory.createDriver(Browser.CHROME);
     }
 
     /*@AfterMethod

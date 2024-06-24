@@ -6,9 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
-
-    private WebDriver driver;
+public class HomePage extends BasePage {
 
     @FindBy(className = "login")
     private WebElement loginButton;
@@ -26,8 +24,7 @@ public class HomePage {
     private WebElement myWishListsButton;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(this.driver, this);
+        super(driver);
     }
 
     public void login(String email, String password){

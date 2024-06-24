@@ -6,8 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class ContactFormPage {
-    private WebDriver driver;
+public class ContactFormPage extends BasePage{
 
     @FindBy(css = "select#id_contact")
     private  WebElement subjectHeadingDropdown;
@@ -15,14 +14,13 @@ public class ContactFormPage {
     private WebElement sendButton;
     @FindBy(id = "message")
     private WebElement messageTextArea;
-
     @FindBy(css = "p.alert.alert-success")
     private WebElement succesMessage;
 
     public ContactFormPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(this.driver, this);
+        super(driver);
     }
+
     public String getSuccesMessage() {
         return succesMessage.getText();
     }
