@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.HomePage;
 
 import java.time.Duration;
 import java.util.List;
@@ -18,6 +19,8 @@ public class FirstSeleniumTest {
 
     private WebDriver driver;
     private final String BASE_URL = "https://greatshop.polteq-testing.com/";
+    private final String EMAIL_ADDRESS = "tom.vandesteene@polteq.com";
+    private final String PASSWORD = "Nina2";
 
     @BeforeMethod
     public void setUp() {
@@ -38,15 +41,10 @@ public class FirstSeleniumTest {
 
     @Test
     public void testLoginSuccessful() {
+        HomePage homepage = new HomePage(driver);
         // Navigate to the website
         driver.get(BASE_URL);
-        driver.findElement(By.className("login")).click();
-        WebElement emailAddressTextbox = driver.findElement(By.id("email"));
-        emailAddressTextbox.sendKeys("tom.vandesteene@polteq.com");
-        WebElement PasswordTextbox = driver.findElement(By.id("passwd"));
-        PasswordTextbox.sendKeys("Nina2");
-        WebElement signinButton = driver.findElement(By.id("SubmitLogin"));
-        signinButton.click();
+        homepage.login(EMAIL_ADDRESS, PASSWORD);
         List<WebElement> signoutButtons = driver.findElements(By.className("logout"));
         Assert.assertEquals(signoutButtons.size(), 1);
     }
@@ -72,13 +70,13 @@ public class FirstSeleniumTest {
         Assert.assertTrue(!signinButtons.isEmpty());
     }
 
-    @AfterMethod
+    /*@AfterMethod
     public void tearDown() {
         //Close the browser
         if (driver != null) {
             driver.quit();
         }
-    }
+    }*/
 }
 
 

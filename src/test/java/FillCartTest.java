@@ -59,11 +59,11 @@ public class FillCartTest {
         Assertions.assertThat(filledCarts.size()).isGreaterThan(0);
     }
 
-    @AfterMethod
+    /*@AfterMethod
     public void tearDown() {
         //Close the browser
         if (driver != null) {
             driver.quit();
         }
-    }
+    }*/
 }
