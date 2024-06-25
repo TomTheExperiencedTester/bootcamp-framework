@@ -52,4 +52,9 @@ public class StepDefinitions {
     public void tearDown(){
         driver.quit();
     }
+    
+    @When("I log in as  {string} with a password {string}")
+    public void iLogInAsWithAPassword(String email_address, String password) {
+        homePage.login(email_address, password);
+    }
 }

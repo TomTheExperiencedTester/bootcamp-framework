@@ -16,16 +16,11 @@ public abstract class TestShopScenario {
         // Set up ChromeDriver using WebDriverManager
         driver = DriverFactory.createDriver(Browser.CHROME);
         driver.manage().window().maximize();
-    }
-
-    @Test
-    public void startTest(){
-        driver = DriverFactory.createDriver(Browser.CHROME);
         driver.get(BASE_URL);
     }
 
-    /*@AfterMethod
+    @AfterMethod
     public void tearDown(){
         driver.quit();
-    }*/
+    }
 }

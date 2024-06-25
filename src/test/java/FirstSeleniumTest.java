@@ -17,12 +17,9 @@ public class FirstSeleniumTest extends TestShopScenario {
     private final String EMAIL_ADDRESS = "tom.vandesteene@polteq.com";
     private final String PASSWORD = "Nina2";
 
-
-
     @Test
     public void testHomePageTitle() {
         // Navigate to the website
-        driver.get(BASE_URL);
         // Check the title of the page
         String PAGE_TITLE = "Polteq Mission Critical Testing - TEST webshop - Polteq's Great TestShop";
         Assert.assertEquals(driver.getTitle(), PAGE_TITLE);
@@ -32,7 +29,6 @@ public class FirstSeleniumTest extends TestShopScenario {
     public void testLoginSuccessful() {
         HomePage homepage = new HomePage(driver);
         // Navigate to the website
-        driver.get(BASE_URL);
         homepage.login(EMAIL_ADDRESS, PASSWORD);
         List<WebElement> signoutButtons = driver.findElements(By.className("logout"));
         Assert.assertEquals(signoutButtons.size(), 1);
