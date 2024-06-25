@@ -21,6 +21,7 @@ public abstract class TestShopScenario {
     @Test
     public void startTest(){
         driver = DriverFactory.createDriver(Browser.CHROME);
+        driver.get(BASE_URL);
     }
 
     /*@AfterMethod
