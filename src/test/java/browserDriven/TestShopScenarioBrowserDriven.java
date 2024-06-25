@@ -1,4 +1,4 @@
-package browserdriven;
+package browserDriven;
 
 import lib.Browser;
 import lib.DriverFactory;
@@ -13,9 +13,9 @@ public abstract class TestShopScenarioBrowserDriven {
 
     @Parameters("browser")
     @BeforeMethod
-    public void setup(){
+    public void setup(Browser browser){
         // Set up ChromeDriver using WebDriverManager
-        driver = DriverFactory.createDriver(Browser.CHROME);
+        driver = DriverFactory.createDriver(browser);
         driver.manage().window().maximize();
         driver.get(BASE_URL);
     }
