@@ -5,14 +5,21 @@
 <suite name="Suite" parallel="none">
     <test name="FirefoxTest">
         <parameter name="browser" value="FIREFOX"/>
+        <parameter name="subject" value="Customer Service"/>
+        <parameter name="email" value="tom.vandesteene@polteq.com"/>
+        <parameter name="message" value="Ingevuld door mezelf!"/>
         <classes>
             <class name="browserDriven.BrowserDrivenTest" />
         </classes>
     </test>
     <test name="ChromeTest">
         <parameter name="browser" value="CHROME"/>
+        <parameter name="subject" value="Customer Service"/>
+        <parameter name="email" value="tom.vandesteene@polteq.com"/>
+        <parameter name="message" value="Ingevuld door mezelf!"/>
         <classes>
             <class name="browserDriven.BrowserDrivenTest" />
         </classes>
     </test>
+
 </suite>

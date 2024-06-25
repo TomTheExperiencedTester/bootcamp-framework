@@ -11,7 +11,7 @@ public abstract class TestShopScenarioBrowserDriven {
     protected WebDriver driver;
     protected final String BASE_URL = "https://greatshop.polteq-testing.com/";
 
-    @Parameters("browser")
+    @Parameters({"browser"})
     @BeforeMethod
     public void setup(Browser browser){
         // Set up ChromeDriver using WebDriverManager
